@@ -55,11 +55,17 @@ public class UsuariosFragment extends Fragment{
 
         FirebaseDatabase.getInstance().getReference("usuario").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                listaUsuarios.clear();
+
                 task.getResult().getChildren().forEach(child -> {
                     Usuarios usuario = child.getValue(Usuarios.class);
-                    listaUsuarios.clear();
-                    listaUsuarios.add(usuario);
+                    if (usuario != null) {
+                        listaUsuarios.add(usuario);
+                    }
                 });
+
+                recyclerUsuarios.getAdapter().notifyDataSetChanged();
+
             }
         });
 

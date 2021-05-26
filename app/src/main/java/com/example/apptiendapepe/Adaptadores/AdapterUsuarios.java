@@ -25,6 +25,7 @@ public class AdapterUsuarios extends RecyclerView.Adapter<AdapterUsuarios.ViewHo
     ArrayList<Usuarios> listaUsuarios;
     private Context contexto;
     private View.OnClickListener listener;
+    private boolean clickLargo = false;
 
     public AdapterUsuarios(ArrayList<Usuarios> listaUsuarios, Context contexto) {
         this.listaUsuarios = listaUsuarios;
@@ -49,16 +50,22 @@ public class AdapterUsuarios extends RecyclerView.Adapter<AdapterUsuarios.ViewHo
         holder.txtId.setText(usu.getPersonId());
         Glide.with(contexto).load(usu.getPersonPhoto()).centerCrop().into(holder.foto);
 
-        holder.foto.setOnClickListener(new View.OnClickListener() {
+        holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!clickLargo){
+                    Toast.makeText(contexto, "Onclick corto", Toast.LENGTH_SHORT).show();
+                }else {
+                    clickLargo = false;
+                }
             }
         });
 
         holder.item.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                clickLargo = true;
+                Toast.makeText(contexto, "Onclick Largo", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
