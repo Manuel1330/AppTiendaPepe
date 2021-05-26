@@ -2,8 +2,8 @@ package com.example.apptiendapepe.Adaptadores;
 
 import android.content.Context;
         import android.content.Intent;
-        import android.net.Uri;
-        import android.view.LayoutInflater;
+import android.graphics.Color;
+import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.ImageView;
@@ -15,6 +15,7 @@ import android.content.Context;
         import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.apptiendapepe.Activities.OnLongClickActivity;
 import com.example.apptiendapepe.Datos.Usuarios;
 import com.example.apptiendapepe.R;
 
@@ -65,10 +66,18 @@ public class AdapterUsuarios extends RecyclerView.Adapter<AdapterUsuarios.ViewHo
             @Override
             public boolean onLongClick(View v) {
                 clickLargo = true;
-                Toast.makeText(contexto, "Onclick Largo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(contexto, OnLongClickActivity.class);
+                intent.putExtra("personId",usu.getPersonId());
+                contexto.startActivity(intent);
                 return false;
             }
         });
+
+        if (usu.getBloqueado().equals("true")){
+            holder.item.setBackgroundColor(Color.RED);
+        }else{
+            holder.item.setBackgroundColor(Color.WHITE);
+        }
 
     }
 

@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppTiendaPepe">
+
+        <activity
+            android:name=".Activities.OnLongClickActivity"
+            android:theme="@style/Theme.AppTiendaPepe"/>
+        <activity
+            android:name=".Activities.OnClickActivity"
+            android:theme="@style/Theme.AppTiendaPepe"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

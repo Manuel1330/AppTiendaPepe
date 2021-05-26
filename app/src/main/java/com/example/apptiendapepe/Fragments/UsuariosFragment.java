@@ -42,8 +42,6 @@ public class UsuariosFragment extends Fragment{
         listaUsuarios = new ArrayList<>();
         recyclerUsuarios.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        llenarUsuarios();
-
         AdapterUsuarios adapter = new AdapterUsuarios(listaUsuarios,getContext());
 
         recyclerUsuarios.setAdapter(adapter);
@@ -71,4 +69,10 @@ public class UsuariosFragment extends Fragment{
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        llenarUsuarios();
+        recyclerUsuarios.getAdapter().notifyDataSetChanged();
+    }
 }
