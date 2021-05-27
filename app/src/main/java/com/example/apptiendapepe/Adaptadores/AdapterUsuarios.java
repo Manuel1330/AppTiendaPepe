@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
         import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.apptiendapepe.Activities.OnClickActivity;
 import com.example.apptiendapepe.Activities.OnLongClickActivity;
 import com.example.apptiendapepe.Datos.Usuarios;
 import com.example.apptiendapepe.R;
@@ -55,7 +56,9 @@ public class AdapterUsuarios extends RecyclerView.Adapter<AdapterUsuarios.ViewHo
             @Override
             public void onClick(View v) {
                 if (!clickLargo){
-                    Toast.makeText(contexto, "Onclick corto", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(contexto, OnClickActivity.class);
+                    intent.putExtra("personId",usu.getPersonId());
+                    contexto.startActivity(intent);
                 }else {
                     clickLargo = false;
                 }
