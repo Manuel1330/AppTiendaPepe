@@ -1,6 +1,8 @@
 package com.example.apptiendapepe.Datos;
 
-public class Usuarios {
+import java.io.Serializable;
+
+public class Usuarios implements Serializable {
 
     private String personName;
     private String personGivenName;

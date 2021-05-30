@@ -3,6 +3,7 @@ package com.example.apptiendapepe.Adaptadores;
 import android.content.Context;
         import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -58,6 +59,9 @@ public class AdapterUsuarios extends RecyclerView.Adapter<AdapterUsuarios.ViewHo
                 if (!clickLargo){
                     Intent intent = new Intent(contexto, OnClickActivity.class);
                     intent.putExtra("personId",usu.getPersonId());
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user", usu);
+                    intent.putExtras(bundle);
                     contexto.startActivity(intent);
                 }else {
                     clickLargo = false;
